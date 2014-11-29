@@ -1,0 +1,65 @@
+/*
+ * Copyright (c) 2014 Cisco Systems, Inc. and others.  All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
+ */
+
+module neutron-endpoint {
+    yang-version 1;
+
+    namespace "urn:opendaylight:openstack-gbp:neutron-endpoint";
+    prefix "neutron-endpoint";
+
+    import endpoint {prefix gbp;}
+    import ietf-inet-types {prefix inet;}
+    import ietf-yang-types {
+        prefix yang;
+        revision-date 2010-09-24;
+    }
+
+    revision "2014-11-28" {
+        description
+            "Initial revision.";
+    }
+
+    container neutron-endpoints {
+        description
+            "Repository to store operational state data about endpoints until they
+             can be fully registered with Group Based Policy.";
+        config false;
+
+        list neutron-endpoint {
+            description
+                "Endpoints indexed by layer 2 addreses.  When modifying
+                 data here, you must also modify data in the
+                 endpoints-l3 list as well.";
+            key "l2-context mac-address";
+            uses gbp:endpoint-fields;
+        }
+
+        list neutron-endpoint-l3 {
+            description
+                "Endpoints indexed by layer 3 addreses.  When modifying
+                 data here, you must also modify data in the endpoints
+                 list as well.";
+
+            key "l3-context ip-address";
+            uses gbp:l3-key;
+
+            uses gbp:endpoint-fields;
+        }
+    }
+
+    rpc register-neutron-endpoint {
+        description
+            "Register a new endpoint into the registry.  If there
+             is already an existing endpoint with the same keys, they
+             will be overwritten with the new information.";
+
+        input {
+            uses gbp:endpoint-fields;
+        }
+    }
+}

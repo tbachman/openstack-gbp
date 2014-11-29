@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: --><!-- Copyright (c) 2013 Robert Varga. All rights reserved. This program and
+    the accompanying materials are made available under the terms of the Eclipse
+    Public License v1.0 which accompanies this distribution, and is available
+    at http://www.eclipse.org/legal/epl-v10.html --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>org.opendaylight.openstack-gbp</groupId>
+        <artifactId>openstack-gbp-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>parent</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <!-- This is the root POM and from here we aggregate more modules -->
+    <artifactId>openstack-gbp-aggregator</artifactId>
+    <description>Toaster Tutorial Archetype</description>
+    <packaging>pom</packaging>
+    <name>${project.artifactId}</name>
+
+    <prerequisites>
+        <maven>3.1.1</maven>
+    </prerequisites>
+
+    <!-- INTERNAL TODO: http://central.sonatype.org/pages/requirements.html
+        ... Either we do this completely or not at all. Needed for Maven Central.
+        If you want this information pushed there, OPTIONAL TODO to fill out. (See
+        caps between <>) <scm> <connection>scm:git:ssh://git.opendaylight.org:29418/<YOUR-REPO-HERE>.git</connection>
+        <developerConnection>scm:git:ssh://git.opendaylight.org:29418/<YOUR-REPO-HERE>.git</developerConnection>
+        <url><YOUR-PROJECT-WIKI-PAGE-HERE></url> <tag>HEAD</tag> </scm> -->
+
+    <!-- Ordering here doesn't matter. They are alphabetical except for the
+        last entry which is feature specific This part of the pom.xml points maven
+        to the subdirectories within the project. This is where other pom.xml files
+        in those directories are pulled in and included in the reactor build (http://maven.apache.org/guides/mini/guide-multiple-modules.html).
+        If a project has decided to depart from the archetype directory structure,
+        the below must match the project's chosen structure -->
+    <modules>
+        <module>parent</module>
+        <module>artifacts</module>
+        <module>openstack-gbp</module>
+        <!-- INTERNAL TODO - we may revisit this naming convention so make
+            sure we have refactored this. -->
+<!--
+        <module>features</module>
+        <module>openstack-gbp-consumer</module>
+        <module>openstack-gbp-it</module>
+-->
+    </modules>
+</project>
