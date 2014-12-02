@@ -11,10 +11,6 @@
   <artifactId>openstack-gbp</artifactId>
   <packaging>bundle</packaging>
 
-  <properties>
-    <openflowplugin-nicira.version>0.1.0-SNAPSHOT</openflowplugin-nicira.version>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>ch.qos.logback</groupId>
@@ -25,25 +21,8 @@
       <artifactId>logback-core</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-all</artifactId>
-      <version>4.0.10.Final</version>
     </dependency>
     <dependency>
       <groupId>org.opendaylight.groupbasedpolicy</groupId>
@@ -85,31 +64,9 @@
     </dependency>
     <dependency>
       <groupId>org.opendaylight.controller.model</groupId>
-      <artifactId>model-flow-base</artifactId>
-<!-- TODO: remove -->
-      <version>1.2.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.opendaylight.controller.model</groupId>
-      <artifactId>model-flow-service</artifactId>
-<!-- TODO: remove -->
-      <version>1.2.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.opendaylight.controller.model</groupId>
       <artifactId>model-inventory</artifactId>
 <!-- TODO: remove -->
       <version>1.2.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.opendaylight.openflowplugin</groupId>
-      <artifactId>openflowplugin-extension-nicira</artifactId>
-      <version>${openflowplugin-nicira.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.opendaylight.openflowplugin</groupId>
-      <artifactId>openflowjava-extension-nicira</artifactId>
-      <version>${openflowplugin-nicira.version}</version>
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>

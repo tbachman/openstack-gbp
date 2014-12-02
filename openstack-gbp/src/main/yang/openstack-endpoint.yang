@@ -6,11 +6,11 @@
  * and is available at http://www.eclipse.org/legal/epl-v10.html
  */
 
-module neutron-endpoint {
+module openstack-endpoint {
     yang-version 1;
 
-    namespace "urn:opendaylight:openstack-gbp:neutron-endpoint";
-    prefix "neutron-endpoint";
+    namespace "urn:opendaylight:openstack-gbp:openstack-endpoint";
+    prefix "openstack-endpoint";
 
     import endpoint {prefix gbp;}
     import ietf-inet-types {prefix inet;}
@@ -24,22 +24,31 @@ module neutron-endpoint {
             "Initial revision.";
     }
 
-    container neutron-endpoints {
+    grouping named-tap {
+        description "Objects containing a tap port in neutron";
+        leaf tap-name {
+            description "The name of a switch TAP interface created by Neutron";
+            type string;
+        }
+    }
+
+    container openstack-endpoints {
         description
             "Repository to store operational state data about endpoints until they
              can be fully registered with Group Based Policy.";
         config false;
 
-        list neutron-endpoint {
+        list openstack-endpoint {
             description
                 "Endpoints indexed by layer 2 addreses.  When modifying
                  data here, you must also modify data in the
                  endpoints-l3 list as well.";
             key "l2-context mac-address";
             uses gbp:endpoint-fields;
+            uses named-tap;
         }
 
-        list neutron-endpoint-l3 {
+        list openstack-endpoint-l3 {
             description
                 "Endpoints indexed by layer 3 addreses.  When modifying
                  data here, you must also modify data in the endpoints
@@ -49,10 +58,11 @@ module neutron-endpoint {
             uses gbp:l3-key;
 
             uses gbp:endpoint-fields;
+            uses named-tap;
         }
     }
 
-    rpc register-neutron-endpoint {
+    rpc register-openstack-endpoint {
         description
             "Register a new endpoint into the registry.  If there
              is already an existing endpoint with the same keys, they
@@ -60,6 +70,7 @@ module neutron-endpoint {
 
         input {
             uses gbp:endpoint-fields;
+            uses named-tap;
         }
     }
 }
