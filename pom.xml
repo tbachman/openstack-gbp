@@ -39,12 +39,6 @@
         <module>parent</module>
         <module>artifacts</module>
         <module>openstack-gbp</module>
-        <!-- INTERNAL TODO - we may revisit this naming convention so make
-            sure we have refactored this. -->
-<!--
         <module>features</module>
-        <module>openstack-gbp-consumer</module>
-        <module>openstack-gbp-it</module>
--->
     </modules>
 </project>
