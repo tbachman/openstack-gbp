@@ -40,5 +40,6 @@
         <module>artifacts</module>
         <module>openstack-gbp</module>
         <module>features</module>
+        <module>distribution-karaf</module>
     </modules>
 </project>
